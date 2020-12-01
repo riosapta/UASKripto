@@ -1,12 +1,13 @@
+import java.lang.Math; 
 public class Lambda {
-    int x;
-    int y;
-    int lambdaRes;
-    public Lambda(int x, int y){
-        this.x = x;
-        this.y = y;
-        
+    double res;
+    public Lambda(){
+        this.res = 0;
     }
 
-    
+    public double count(double x, double y, double a){
+        this.res = ((Math.pow(x, 3)) + a)/(2 * y);
+        return res;
+    }
+
 }
