@@ -47,9 +47,9 @@ public class Main{
         
         if(q == 2){
             lambda.count(x, y, a, p);
-            x3 = lambda.getX(x, x);
-            y3 = lambda.getY(x, y);
-            System.out.println("y1 = (" + x3 + ", " + y3 + ")");
+            xTemp = lambda.getX(x, x);
+            yTemp = lambda.getY(x, y);
+            System.out.println("y1 = (" + xTemp + ", " + yTemp + ")");
         } else if (q > 2) {
             lambda.count(x, y, a, p);
             x3 = lambda.getX(x, x);
@@ -82,7 +82,7 @@ public class Main{
         System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
         System.out.println("debugB xTemp2 = (" + xTemp2 + ", " + yTemp2 + ")");
         if(r == 2){
-            lambda.count(x, y, a, p);
+            lambda.count(xTemp, y, a, p);
             x3 = lambda.getX(x, x);
             y3 = lambda.getY(x, y);
             System.out.println("ra = (" + x3 + ", " + y3 + ")");
