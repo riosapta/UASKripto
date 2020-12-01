@@ -63,12 +63,44 @@ public class LambdaNS {
         return y3;
     }
 
-    public double modInverse(double a, double m) 
+    /*public double modInverse(double a, double m) 
     { 
         a = a % m; 
-        for (int i = 1; i < m; i++) 
+        for (double i = 1; i < m; i++) 
             if ((a * i) % m == 1) 
                 return i; 
         return 1; 
+    } */
+
+    static double modInverse(double a, double m) 
+    { 
+        double m0 = m; 
+        double s = 0, r = 1; 
+  
+        if (m == 1) 
+            return 0; 
+  
+        while (a > 1) { 
+            // q is quotient 
+            double q = a / m; 
+  
+            double t = m; 
+  
+            // m is remainder now, process 
+            // same as Euclid's algo 
+            m = a % m; 
+            a = t; 
+            t = s; 
+  
+            // Update x and y 
+            s = r - q * s; 
+            r = t; 
+        } 
+  
+        // Make x positive 
+        if (r < 0) 
+            r += m0; 
+  
+        return r; 
     } 
 }

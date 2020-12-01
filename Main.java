@@ -185,12 +185,19 @@ public class Main{
             System.out.println("r(y1) = (" + xTemp5 + ", " + yTemp5 + ")");
         } else if (r > 2) {
             lambda.count(xTemp, yTemp, a, p);
-            x3 = lambda.getX(x, x);
-            y3 = lambda.getY(x, y);
+            double xtest = lambda.getX(xTemp, xTemp);
+            double ytest = lambda.getY(xTemp, yTemp);
+            System.out.println("-----");
+            System.out.println(xtest);
+            System.out.println(ytest);
+            System.out.println(xTemp);
+            System.out.println(yTemp);
+            System.out.println(lambdaNS.modInverse((3 - 22), 29));
+            System.out.println("-----");
     
-            lambdaNS.count(x3, y3, xTemp, yTemp, p);
-            xRes5 = lambdaNS.getX(x3, xTemp);
-            yRes5 = lambdaNS.getY(x3, y3);
+            lambdaNS.count(xtest, ytest, xTemp, yTemp, p);
+            xRes5 = lambdaNS.getX(xtest, xTemp);
+            yRes5 = lambdaNS.getY(xtest, ytest);
 
             for(double i = 0; i < r - 2; i++){
                 lambdaNS.count(xRes5, yRes5, xTemp, yTemp, p);
