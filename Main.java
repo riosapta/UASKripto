@@ -165,10 +165,83 @@ public class Main{
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ DEKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
         /*
         (p1, p2) = y2 - r(y1)
+        ciphertext = ((y1), (y2))
+        y1 = xTemp, yTemp
+        y2 = xRes4, yRes4
         */
-
+        
         //////////////////////////////////////////////////////////////////////// buat nyari r(y1) ///////////////////////////////////////////////////////////////////////////////
+        //x3 = 0;
+        //y3 = 0;
+        double xRes5 = 0;
+        double yRes5 = 0;
+        double xTemp5 = 0;
+        double yTemp5 = 0;
+        
+        if(r == 2){
+            lambda.count(xTemp, yTemp, a, p);
+            xTemp5 = lambda.getX(xTemp, xTemp);
+            yTemp5 = lambda.getY(xTemp, yTemp);
+            System.out.println("r(y1) = (" + xTemp5 + ", " + yTemp5 + ")");
+        } else if (r > 2) {
+            lambda.count(xTemp, yTemp, a, p);
+            x3 = lambda.getX(x, x);
+            y3 = lambda.getY(x, y);
+    
+            lambdaNS.count(x3, y3, xTemp, yTemp, p);
+            xRes5 = lambdaNS.getX(x3, xTemp);
+            yRes5 = lambdaNS.getY(x3, y3);
 
-       
+            for(double i = 0; i < r - 2; i++){
+                lambdaNS.count(xRes5, yRes5, xTemp, yTemp, p);
+                xTemp5 = lambdaNS.getX(xRes5, xTemp);
+                yTemp5 = lambdaNS.getY(yRes5, y3);
+            }
+
+            if(xTemp5 == 0) {
+                System.out.println("r(y1) res = (" + xRes5 + ", " + yRes5 + ")");
+            } else System.out.println("r(y1) temp = (" + xTemp5 + ", " + yTemp5 + ")");
+        } else {
+            System.out.println("Invalid q input.");
+        }
+
+        //////////////////////////////////////////////////////////////////////// buat nyari y2 - r(y1) ///////////////////////////////////////////////////////////////////////////////
+        // -(x, y) = (x, -y)
+        if (xRes5 == 0){
+            yTemp5 = -yTemp5;
+            if (yRes5>=0) {
+                yTemp5 = yTemp5 % p;
+            }
+            else{
+                yTemp5 = p + yTemp5;
+            }
+        }
+        else {
+            yRes5 = -yRes5;
+            if (yRes5>=0) {
+                yRes5 = yRes5 % p;
+            }
+            else{
+                yRes5 = p + yRes5;
+            }
+        }
+        
+
+        //////////////////////////////////////////////////////////////////////// buat nyari plaintext ///////////////////////////////////////////////////////////////////////////////
+        double xRes6 = 0;
+        double yRes6 = 0;
+
+        if (xRes5 == 0){
+            lambdaNS.count(P1, P2, xTemp5, yTemp5, p);
+            xRes6 = lambdaNS.getX(P1, xRes3);;
+            yRes6 = lambdaNS.getY(P1, P2);
+            System.out.println("Plaintext = (" + xRes6 + ", " + yRes6 + ")");
+        }
+        else {
+            lambdaNS.count(P1, P2, xRes5, yRes5, p);
+            xRes6 = lambdaNS.getX(P1, xTemp3);;
+            yRes4 = lambdaNS.getY(P1, P2);
+            System.out.println("Plaintext = (" + xRes6 + ", " + yRes6 + ")");
+        }
     }
 }
