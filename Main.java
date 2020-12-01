@@ -147,7 +147,7 @@ public class Main{
         lambdaNS.count(P1, P2, xTemp3, yTemp3, p);
         xRes = lambdaNS.getX(P1, xTemp3);;
         yRes = lambdaNS.getY(P1, P2);
-        System.out.println("a(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
+        System.out.println("y2 = (" + xTemp3 + ", " + yTemp3 + ")");
 
         /*
         (p1, p2) = y2 - r(y1)
