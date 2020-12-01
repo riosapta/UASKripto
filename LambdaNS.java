@@ -10,7 +10,7 @@ public class LambdaNS {
     
     public double count(double x, double y, double x2, double y2, double p){
         this.p = p;
-        res = ((y2 - y) / (x2 - x)) % p;
+        res = ((y2 - y) * modInverse((x2 - x), p)) % p;
         return res;
     }
 
@@ -23,4 +23,13 @@ public class LambdaNS {
         y3 = (this.res*(x - x3) - y) % p;
         return y3;
     }
+
+    public double modInverse(double a, double m) 
+    { 
+        a = a % m; 
+        for (int x = 1; x < m; x++) 
+            if ((a * x) % m == 1) 
+                return x; 
+        return 1; 
+    } 
 }
