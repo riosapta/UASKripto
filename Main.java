@@ -78,9 +78,6 @@ public class Main{
         double yRes2 = 0;
         double xTemp2 = 0;
         double yTemp2 = 0;
-        System.out.println("debug xRes2 " + xRes2 + yRes2);
-        System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
-        System.out.println("debugB xTemp2 = (" + xTemp2 + ", " + yTemp2 + ")");
         if(r == 2){
             lambda.count(x, y, a, p);
             x3 = lambda.getX(x, x);
@@ -90,7 +87,7 @@ public class Main{
             lambda.count(x, y, a, p);
             x3 = lambda.getX(x, x);
             y3 = lambda.getY(x, y);
-            System.out.println("x3=" + x3);
+            //System.out.println("x3=" + x3);
             lambdaNS.count(x3, y3, x, y, p);
             xRes2 = lambdaNS.getX(x3, x);;
             yRes2 = lambdaNS.getY(x3, y3);
@@ -101,7 +98,10 @@ public class Main{
                 yTemp2 = lambdaNS.getY(yRes2, y3);
             }
 
-            System.out.println("ra = (" + xTemp2 + ", " + yTemp2 + ")");
+            if(xTemp2 == 0) {
+                System.out.println("ra = (" + xRes2 + ", " + yRes2 + ")");
+            } else System.out.println("ra = (" + xTemp2 + ", " + yTemp2 + ")");
+            
         } else {
             System.out.println("Invalid q input.");
         }
@@ -114,41 +114,42 @@ public class Main{
         double yRes3 = 0;
         double xTemp3 = 0;
         double yTemp3 = 0;
-        System.out.println("debug xRes3 " + xRes3 + yRes3);
-        System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
-        System.out.println("debugB xTemp3 = (" + xTemp3 + ", " + yTemp3 + ")");
-        System.out.println("debugc xTemp2 = (" + xTemp2 + ", " + yTemp2 + ")");
         if(q == 2){
-            lambda.count(xTemp2, yTemp2, a, p);
-            x3 = lambda.getX(xTemp2, xTemp2);
-            y3 = lambda.getY(xTemp2, yTemp2);
+            lambda.count(xRes2, yRes2, a, p);
+            x3 = lambda.getX(xRes2, xRes2);
+            y3 = lambda.getY(xRes2, yRes2);
             System.out.println("q(ra) = (" + x3 + ", " + y3 + ")");
         } else if (q > 2) {
-            lambda.count(xTemp2, yTemp2, a, p);
-            x3 = lambda.getX(xTemp2, xTemp2);
-            y3 = lambda.getY(xTemp2, yTemp2);
+            lambda.count(xRes2, yRes2, a, p);
+            x3 = lambda.getX(xRes2, xRes2);
+            y3 = lambda.getY(xRes2, yRes2);
     
             lambdaNS.count(x3, y3, x, y, p);
-            xRes3 = lambdaNS.getX(x3, xTemp2);;
+            xRes3 = lambdaNS.getX(x3, xRes2);;
             yRes3 = lambdaNS.getY(x3, y3);
 
             for(double i = 0; i < q - 2; i++){
                 lambdaNS.count(xRes3, yRes3, x, y, p);
-                xTemp3 = lambdaNS.getX(xRes3, xTemp2);
+                xTemp3 = lambdaNS.getX(xRes3, xRes2);
                 yTemp3 = lambdaNS.getY(yRes3, y3);
             }
 
-            System.out.println("a(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
+            if(xTemp3 == 0) {
+                System.out.println("ra = (" + xRes3 + ", " + yRes3 + ")");
+            } else System.out.println("ra = (" + xTemp3 + ", " + yTemp3 + ")");
         } else {
             System.out.println("Invalid q input.");
         }
 
         //////////////////////////////////////////////////////////////////////// buat nyari y2 ///////////////////////////////////////////////////////////////////////////////
 
-        lambdaNS.count(P1, P2, xTemp3, yTemp3, p);
-        xRes = lambdaNS.getX(P1, xTemp3);;
-        yRes = lambdaNS.getY(P1, P2);
-        System.out.println("y2 = (" + xTemp3 + ", " + yTemp3 + ")");
+        double xRes4 = 0;
+        double yRes4 = 0;
+        lambdaNS.count(P1, P2, xRes3, yRes3, p);
+        xRes4 = lambdaNS.getX(P1, xRes3);;
+        yRes4 = lambdaNS.getY(P1, P2);
+        System.out.println("y2 = (" + xRes4 + ", " + yRes4 + ")");
+        System.out.println("Ciphertext: {(" + xTemp + ", " + yTemp + "),(" + xRes4 + ", " + yRes4 + ")}");
 
 
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ DEKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
@@ -158,39 +159,6 @@ public class Main{
 
         //////////////////////////////////////////////////////////////////////// buat nyari r(y1) ///////////////////////////////////////////////////////////////////////////////
 
-        x3 = 0;
-        y3 = 0;
-        double xRes4 = 0;
-        double yRes4 = 0;
-        double xTemp4 = 0;
-        double yTemp4 = 0;
-        System.out.println("debug xRes3 " + xRes4 + yRes4);
-        System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
-        System.out.println("debugB xTemp3 = (" + xTemp4 + ", " + yTemp4 + ")");
-        System.out.println("debugc xTemp2 = (" + xTemp3 + ", " + yTemp3 + ")");
-        if(q == 2){
-            lambda.count(xTemp3, yTemp3, a, p);
-            x3 = lambda.getX(xTemp2, xTemp2);
-            y3 = lambda.getY(xTemp2, yTemp2);
-            System.out.println("q(ra) = (" + x3 + ", " + y3 + ")");
-        } else if (q > 2) {
-            lambda.count(xTemp2, yTemp2, a, p);
-            x3 = lambda.getX(xTemp2, xTemp2);
-            y3 = lambda.getY(xTemp2, yTemp2);
-    
-            lambdaNS.count(x3, y3, x, y, p);
-            xRes3 = lambdaNS.getX(x3, xTemp2);;
-            yRes3 = lambdaNS.getY(x3, y3);
-
-            for(double i = 0; i < q - 2; i++){
-                lambdaNS.count(xRes3, yRes3, x, y, p);
-                xTemp3 = lambdaNS.getX(xRes3, xTemp2);
-                yTemp3 = lambdaNS.getY(yRes3, y3);
-            }
-
-            System.out.println("a(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
-        } else {
-            System.out.println("Invalid q input.");
-        }
+       
     }
 }

@@ -32,7 +32,7 @@ public class Lambda {
         else{
             x3 = p + x3;
         }
-        System.out.println(x3);
+        // System.out.println(x3);
         return x3;
     }
 
@@ -45,7 +45,7 @@ public class Lambda {
         else{
             y3 = p + y3;
         }
-        System.out.println(y3);
+        // System.out.println(y3);
         return y3;
     }
 
