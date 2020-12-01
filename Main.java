@@ -1,24 +1,38 @@
 import java.util.Scanner;
 
+
 public class Main{
-    public static void main(String args[]){
+
+    private static GUI gui;
+
+	public static void main(String args[]){
         Lambda lambda = new Lambda();
         LambdaNS lambdaNS = new LambdaNS();
         /*
         isSame = true -> lambda(x,y)
         isSame = false -> lambdaNS(x,y,x2,y2);
         */
+
+        ////////////////////* GUI  */////////////////////////////////////////
+        
+        gui = new GUI();    
+        double p = gui.pdo;    
+        double a = gui.ado;
+        double b = gui.bdo;
+        double q = gui.qdo;
+        double r = gui.rdo;
+
+        ///////////////////////////////////////////////////////////////////////////
+
+    
+
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Masukkan p =   ");
-        double p = scanner.nextDouble();
-        System.out.print("Masukkan a =   ");
-        double a = scanner.nextDouble();
-        System.out.print("Masukkan b =   ");
-        double b = scanner.nextDouble();
-        System.out.print("Masukkan q =   ");
-        double q = scanner.nextDouble();
-        System.out.print("Masukkan r =   ");
-        double r = scanner.nextDouble();
+        
+        System.out.println("Mulai?");
+        System.out.print("Terserah = ");
+        String fake = scanner.nextLine();
+       
+        
         System.out.println("Masukkan Plaintext");
         System.out.print("P1 = ");
         double P1 = scanner.nextDouble();

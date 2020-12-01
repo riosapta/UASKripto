@@ -10,6 +10,8 @@ public class key {
     double kg[];
     double y[][];
     int yint[][];
+    
+    String inihasilAnjing[] = new String[29];
 
     public key(int p){
         this.p = p;
@@ -53,7 +55,7 @@ public class key {
     private void result() {
         for (int i = 0; i < p; i++) {
             if (y[i][0] != 0 || y[i][1] != 0) {
-                System.out.println("- (" + i + "," + yint[i][0] + ") & (" + i + "," + yint[i][1] + ")");
+                inihasilAnjing[i] = ("- (" + i + "," + yint[i][0] + ") & (" + i + "," + yint[i][1] + ")").toString();
             }
             
         }
