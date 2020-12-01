@@ -16,6 +16,10 @@ public class LambdaNS {
         if (res>=0) {
             res = res % p;    
         }
+        else if(res < -p){
+            res = res % p;
+            res = p + res;
+        }
         else{
             res = p + res;
         }
@@ -30,6 +34,10 @@ public class LambdaNS {
         if (x3>=0) {
             x3 = x3 % p;    
         }
+        else if(x3 < -p){
+            x3 = x3 % p;
+            x3 = p + x3;
+        }
         else{
             x3 = p + x3;
         }
@@ -43,6 +51,10 @@ public class LambdaNS {
         y3 = ((this.res*(x - x3)) - y);
         if (y3>=0) {
             y3 = y3 % p;    
+        }
+        else if(y3 < -p){
+            y3 = y3 % p;
+            y3 = p + y3;
         }
         else{
             y3 = p + y3;
