@@ -30,6 +30,7 @@ public class Main{
         System.out.print("y = ");
         double y = scanner.nextDouble();
 
+        //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ENKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
         /*
         Y1 = qa
         Y2 = (p1, p2) + q(ra)
@@ -149,8 +150,47 @@ public class Main{
         yRes = lambdaNS.getY(P1, P2);
         System.out.println("y2 = (" + xTemp3 + ", " + yTemp3 + ")");
 
+
+        //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ DEKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
         /*
         (p1, p2) = y2 - r(y1)
         */
+
+        //////////////////////////////////////////////////////////////////////// buat nyari r(y1) ///////////////////////////////////////////////////////////////////////////////
+
+        x3 = 0;
+        y3 = 0;
+        double xRes4 = 0;
+        double yRes4 = 0;
+        double xTemp4 = 0;
+        double yTemp4 = 0;
+        System.out.println("debug xRes3 " + xRes4 + yRes4);
+        System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
+        System.out.println("debugB xTemp3 = (" + xTemp4 + ", " + yTemp4 + ")");
+        System.out.println("debugc xTemp2 = (" + xTemp3 + ", " + yTemp3 + ")");
+        if(q == 2){
+            lambda.count(xTemp3, yTemp3, a, p);
+            x3 = lambda.getX(xTemp2, xTemp2);
+            y3 = lambda.getY(xTemp2, yTemp2);
+            System.out.println("q(ra) = (" + x3 + ", " + y3 + ")");
+        } else if (q > 2) {
+            lambda.count(xTemp2, yTemp2, a, p);
+            x3 = lambda.getX(xTemp2, xTemp2);
+            y3 = lambda.getY(xTemp2, yTemp2);
+    
+            lambdaNS.count(x3, y3, x, y, p);
+            xRes3 = lambdaNS.getX(x3, xTemp2);;
+            yRes3 = lambdaNS.getY(x3, y3);
+
+            for(double i = 0; i < q - 2; i++){
+                lambdaNS.count(xRes3, yRes3, x, y, p);
+                xTemp3 = lambdaNS.getX(xRes3, xTemp2);
+                yTemp3 = lambdaNS.getY(yRes3, y3);
+            }
+
+            System.out.println("a(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
+        } else {
+            System.out.println("Invalid q input.");
+        }
     }
 }
