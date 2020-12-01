@@ -1,4 +1,6 @@
 import java.lang.Math; 
+import java.io.*; 
+
 public class Lambda {
     double res;
     double p;
@@ -10,7 +12,7 @@ public class Lambda {
 
     public double count(double x, double y, double a, double p){
         this.p= p;
-        res = (((Math.pow(x, 3)) + a)/(2 * y)) % p;
+        res = (((Math.pow(3*x, 2)) + a)*modInverse(2*y, p)) % p;
         return res;
     }
 
@@ -23,4 +25,13 @@ public class Lambda {
         y3 = (this.res*(x - x3) - y) % p;
         return y3;
     }
+
+    public double modInverse(double a, double m) 
+    { 
+        a = a % m; 
+        for (int x = 1; x < m; x++) 
+            if ((a * x) % m == 1) 
+                return x; 
+        return 1; 
+    } 
 }
