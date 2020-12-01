@@ -12,7 +12,7 @@ public class Lambda {
 
     public double count(double x, double y, double a, double p){
         this.p= p;
-        res = (((Math.pow(3*x, 2)) + a)*modInverse(2*y, p)) % p;
+        res = (((3*(Math.pow(x, 2)) + a))*modInverse(2*y, p)) % p;
         return res;
     }
 
@@ -29,9 +29,9 @@ public class Lambda {
     public double modInverse(double a, double m) 
     { 
         a = a % m; 
-        for (int x = 1; x < m; x++) 
-            if ((a * x) % m == 1) 
-                return x; 
+        for (int i = 1; i < m; i++) 
+            if ((a * i) % m == 1) 
+                return i; 
         return 1; 
     } 
 }

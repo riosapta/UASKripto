@@ -27,9 +27,9 @@ public class LambdaNS {
     public double modInverse(double a, double m) 
     { 
         a = a % m; 
-        for (int x = 1; x < m; x++) 
-            if ((a * x) % m == 1) 
-                return x; 
+        for (int i = 1; i < m; i++) 
+            if ((a * i) % m == 1) 
+                return i; 
         return 1; 
     } 
 }
