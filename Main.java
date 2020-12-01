@@ -44,6 +44,7 @@ public class Main{
         System.out.print("y = ");
         double y = scanner.nextDouble();
 
+        //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ENKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
         /*
         Y1 = qa
         Y2 = (p1, p2) + q(ra)
@@ -60,9 +61,9 @@ public class Main{
         
         if(q == 2){
             lambda.count(x, y, a, p);
-            x3 = lambda.getX(x, x);
-            y3 = lambda.getY(x, y);
-            System.out.println("y1 = (" + x3 + ", " + y3 + ")");
+            xTemp = lambda.getX(x, x);
+            yTemp = lambda.getY(x, y);
+            System.out.println("y1 = (" + xTemp + ", " + yTemp + ")");
         } else if (q > 2) {
             lambda.count(x, y, a, p);
             x3 = lambda.getX(x, x);
@@ -71,7 +72,8 @@ public class Main{
             lambdaNS.count(x3, y3, x, y, p);
             xRes = lambdaNS.getX(x3, x);;
             yRes = lambdaNS.getY(x3, y3);
-
+            // (q / 2) - 2
+            // jumlah kali ngulang brp ngulang. 7(ra) = (ra + ra) + ra) + ra) + ra) + ra) + ra)
             for(double i = 0; i < q - 2; i++){
                 lambdaNS.count(xRes, yRes, x, y, p);
                 xTemp = lambdaNS.getX(xRes, x);
@@ -85,36 +87,36 @@ public class Main{
         
         //////////////////////////////////////////////////////////////////////// buat nyari ra ///////////////////////////////////////////////////////////////////////////////
 
-        x3 = 0;
-        y3 = 0;
+        //x3 = 0;
+        //y3 = 0;
         double xRes2 = 0;
         double yRes2 = 0;
         double xTemp2 = 0;
         double yTemp2 = 0;
-        System.out.println("debug xRes2 " + xRes2 + yRes2);
-        System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
-        System.out.println("debugB xTemp2 = (" + xTemp2 + ", " + yTemp2 + ")");
         if(r == 2){
             lambda.count(x, y, a, p);
-            x3 = lambda.getX(x, x);
-            y3 = lambda.getY(x, y);
+            xTemp2 = lambda.getX(x, x);
+            yTemp2 = lambda.getY(x, y);
             System.out.println("ra = (" + x3 + ", " + y3 + ")");
         } else if (r > 2) {
             lambda.count(x, y, a, p);
             x3 = lambda.getX(x, x);
             y3 = lambda.getY(x, y);
-    
+            //System.out.println("x3=" + x3);
             lambdaNS.count(x3, y3, x, y, p);
             xRes2 = lambdaNS.getX(x3, x);;
             yRes2 = lambdaNS.getY(x3, y3);
 
-            for(double i = 0; i < q - 2; i++){
+            for(double i = 0; i < r - 3; i++){
                 lambdaNS.count(xRes2, yRes2, x, y, p);
                 xTemp2 = lambdaNS.getX(xRes2, x);
                 yTemp2 = lambdaNS.getY(yRes2, y3);
             }
 
-            System.out.println("ra = (" + xTemp2 + ", " + yTemp2 + ")");
+            if(xTemp2 == 0) {
+                System.out.println("ra = (" + xRes2 + ", " + yRes2 + ")");
+            } else System.out.println("ra = (" + xTemp2 + ", " + yTemp2 + ")");
+            
         } else {
             System.out.println("Invalid q input.");
         }
@@ -127,44 +129,140 @@ public class Main{
         double yRes3 = 0;
         double xTemp3 = 0;
         double yTemp3 = 0;
-        System.out.println("debug xRes3 " + xRes3 + yRes3);
-        System.out.println("debugA x3 = (" + x3 + ", " + y3 + ")");
-        System.out.println("debugB xTemp3 = (" + xTemp3 + ", " + yTemp3 + ")");
-        System.out.println("debugc xTemp2 = (" + xTemp2 + ", " + yTemp2 + ")");
         if(q == 2){
-            lambda.count(xTemp2, yTemp2, a, p);
-            x3 = lambda.getX(xTemp2, xTemp2);
-            y3 = lambda.getY(xTemp2, yTemp2);
-            System.out.println("q(ra) = (" + x3 + ", " + y3 + ")");
+            lambda.count(xRes2, yRes2, a, p);
+            xTemp3 = lambda.getX(xRes2, xRes2);
+            yTemp3 = lambda.getY(xRes2, yRes2);
+            System.out.println("q(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
         } else if (q > 2) {
-            lambda.count(xTemp2, yTemp2, a, p);
-            x3 = lambda.getX(xTemp2, xTemp2);
-            y3 = lambda.getY(xTemp2, yTemp2);
+            lambda.count(xRes2, yRes2, a, p);
+            x3 = lambda.getX(xRes2, xRes2);
+            y3 = lambda.getY(xRes2, yRes2);
     
             lambdaNS.count(x3, y3, x, y, p);
-            xRes3 = lambdaNS.getX(x3, xTemp2);;
+            xRes3 = lambdaNS.getX(x3, xRes2);;
             yRes3 = lambdaNS.getY(x3, y3);
 
             for(double i = 0; i < q - 2; i++){
                 lambdaNS.count(xRes3, yRes3, x, y, p);
-                xTemp3 = lambdaNS.getX(xRes3, xTemp2);
+                xTemp3 = lambdaNS.getX(xRes3, xRes2);
                 yTemp3 = lambdaNS.getY(yRes3, y3);
             }
 
-            System.out.println("a(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
+            if(xTemp3 == 0) {
+                System.out.println("ra = (" + xRes3 + ", " + yRes3 + ")");
+            } else System.out.println("ra = (" + xTemp3 + ", " + yTemp3 + ")");
         } else {
             System.out.println("Invalid q input.");
         }
 
         //////////////////////////////////////////////////////////////////////// buat nyari y2 ///////////////////////////////////////////////////////////////////////////////
 
-        lambdaNS.count(P1, P2, xTemp3, yTemp3, p);
-        xRes = lambdaNS.getX(P1, xTemp3);;
-        yRes = lambdaNS.getY(P1, P2);
-        System.out.println("a(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
+        double xRes4 = 0;
+        double yRes4 = 0;
+        if (xRes3 == 0){
+            lambdaNS.count(P1, P2, xTemp3, yTemp3, p);
+            xRes4 = lambdaNS.getX(P1, xRes3);;
+            yRes4 = lambdaNS.getY(P1, P2);
+            System.out.println("y2 = (" + xRes4 + ", " + yRes4 + ")");
+            System.out.println("Ciphertext: {(" + xTemp + ", " + yTemp + "),(" + xRes4 + ", " + yRes4 + ")}");
+        }
+        else {
+            lambdaNS.count(P1, P2, xRes3, yRes3, p);
+            xRes4 = lambdaNS.getX(P1, xTemp3);;
+            yRes4 = lambdaNS.getY(P1, P2);
+            System.out.println("y2 = (" + xRes4 + ", " + yRes4 + ")");
+            System.out.println("Ciphertext: {(" + xTemp + ", " + yTemp + "),(" + xRes4 + ", " + yRes4 + ")}");
+        }
+        
 
+        //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ DEKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
         /*
         (p1, p2) = y2 - r(y1)
+        ciphertext = ((y1), (y2))
+        y1 = xTemp, yTemp
+        y2 = xRes4, yRes4
         */
+        
+        //////////////////////////////////////////////////////////////////////// buat nyari r(y1) ///////////////////////////////////////////////////////////////////////////////
+        //x3 = 0;
+        //y3 = 0;
+        double xRes5 = 0;
+        double yRes5 = 0;
+        double xTemp5 = 0;
+        double yTemp5 = 0;
+        
+        if(r == 2){
+            lambda.count(xTemp, yTemp, a, p);
+            xTemp5 = lambda.getX(xTemp, xTemp);
+            yTemp5 = lambda.getY(xTemp, yTemp);
+            System.out.println("r(y1) = (" + xTemp5 + ", " + yTemp5 + ")");
+        } else if (r > 2) {
+            lambda.count(xTemp, yTemp, a, p);
+            double xtest = lambda.getX(xTemp, xTemp);
+            double ytest = lambda.getY(xTemp, yTemp);
+            System.out.println("-----");
+            System.out.println(xtest);
+            System.out.println(ytest);
+            System.out.println(xTemp);
+            System.out.println(yTemp);
+            System.out.println(lambdaNS.modInverse((3 - 22), 29));
+            System.out.println("-----");
+    
+            lambdaNS.count(xtest, ytest, xTemp, yTemp, p);
+            xRes5 = lambdaNS.getX(xtest, xTemp);
+            yRes5 = lambdaNS.getY(xtest, ytest);
+
+            for(double i = 0; i < r - 2; i++){
+                lambdaNS.count(xRes5, yRes5, xTemp, yTemp, p);
+                xTemp5 = lambdaNS.getX(xRes5, xTemp);
+                yTemp5 = lambdaNS.getY(yRes5, y3);
+            }
+
+            if(xTemp5 == 0) {
+                System.out.println("r(y1) res = (" + xRes5 + ", " + yRes5 + ")");
+            } else System.out.println("r(y1) temp = (" + xTemp5 + ", " + yTemp5 + ")");
+        } else {
+            System.out.println("Invalid q input.");
+        }
+
+        //////////////////////////////////////////////////////////////////////// buat nyari y2 - r(y1) ///////////////////////////////////////////////////////////////////////////////
+        // -(x, y) = (x, -y)
+        if (xRes5 == 0){
+            yTemp5 = -yTemp5;
+            if (yRes5>=0) {
+                yTemp5 = yTemp5 % p;
+            }
+            else{
+                yTemp5 = p + yTemp5;
+            }
+        }
+        else {
+            yRes5 = -yRes5;
+            if (yRes5>=0) {
+                yRes5 = yRes5 % p;
+            }
+            else{
+                yRes5 = p + yRes5;
+            }
+        }
+        
+
+        //////////////////////////////////////////////////////////////////////// buat nyari plaintext ///////////////////////////////////////////////////////////////////////////////
+        double xRes6 = 0;
+        double yRes6 = 0;
+
+        if (xRes5 == 0){
+            lambdaNS.count(P1, P2, xTemp5, yTemp5, p);
+            xRes6 = lambdaNS.getX(P1, xRes3);;
+            yRes6 = lambdaNS.getY(P1, P2);
+            System.out.println("Plaintext = (" + xRes6 + ", " + yRes6 + ")");
+        }
+        else {
+            lambdaNS.count(P1, P2, xRes5, yRes5, p);
+            xRes6 = lambdaNS.getX(P1, xTemp3);;
+            yRes4 = lambdaNS.getY(P1, P2);
+            System.out.println("Plaintext = (" + xRes6 + ", " + yRes6 + ")");
+        }
     }
 }
