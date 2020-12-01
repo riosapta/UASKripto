@@ -35,22 +35,39 @@ public class Main{
         Y2 = (p1, p2) + q(ra)
         */
         
-        lambda.count(x, y, a, p);
-        double x3 = lambda.getX(x, x);
-        double y3 = lambda.getY(x, y);
-
-        lambdaNS.count(x3, y3, x, y, p);
-        double xRes = lambdaNS.getX(x3, x);;
-        double yRes = lambdaNS.getY(x3, y3);
-
+       
+        double x3 = 0;
+        double y3 = 0;
+        double xRes = 0;
+        double yRes = 0;
         double xTemp = 0;
         double yTemp = 0;
-        for(double i = 0; i < q - 2; i++){
-            lambdaNS.count(xRes, yRes, x, y, p);
-            xTemp = lambdaNS.getX(xRes, x);
-            yTemp = lambdaNS.getY(yRes, y3);
+        
+        if(q == 2){
+            lambda.count(x, y, a, p);
+            x3 = lambda.getX(x, x);
+            y3 = lambda.getY(x, y);
+            System.out.println("y1 = (" + x3 + ", " + y3 + ")");
+        } else if (q > 2) {
+            lambda.count(x, y, a, p);
+            x3 = lambda.getX(x, x);
+            y3 = lambda.getY(x, y);
+    
+            lambdaNS.count(x3, y3, x, y, p);
+            xRes = lambdaNS.getX(x3, x);;
+            yRes = lambdaNS.getY(x3, y3);
+
+            for(double i = 0; i < q - 2; i++){
+                lambdaNS.count(xRes, yRes, x, y, p);
+                xTemp = lambdaNS.getX(xRes, x);
+                yTemp = lambdaNS.getY(yRes, y3);
+            }
+
+            System.out.println("y1 = (" + xTemp + ", " + yTemp + ")");
+        } else {
+            System.out.println("Invalid q input.");
         }
-        System.out.println("y1 = (" + xTemp + ", " + yTemp + ")");
+           
 
         /*
         (p1, p2) = y2 - r(y1)
