@@ -58,7 +58,8 @@ public class Main{
             lambdaNS.count(x3, y3, x, y, p);
             xRes = lambdaNS.getX(x3, x);;
             yRes = lambdaNS.getY(x3, y3);
-
+            // (q / 2) - 2
+            // jumlah kali ngulang brp ngulang. 7(ra) = (ra + ra) + ra) + ra) + ra) + ra) + ra)
             for(double i = 0; i < q - 2; i++){
                 lambdaNS.count(xRes, yRes, x, y, p);
                 xTemp = lambdaNS.getX(xRes, x);
@@ -80,8 +81,8 @@ public class Main{
         double yTemp2 = 0;
         if(r == 2){
             lambda.count(x, y, a, p);
-            x3 = lambda.getX(x, x);
-            y3 = lambda.getY(x, y);
+            xTemp2 = lambda.getX(x, x);
+            yTemp2 = lambda.getY(x, y);
             System.out.println("ra = (" + x3 + ", " + y3 + ")");
         } else if (r > 2) {
             lambda.count(x, y, a, p);
@@ -116,9 +117,9 @@ public class Main{
         double yTemp3 = 0;
         if(q == 2){
             lambda.count(xRes2, yRes2, a, p);
-            x3 = lambda.getX(xRes2, xRes2);
-            y3 = lambda.getY(xRes2, yRes2);
-            System.out.println("q(ra) = (" + x3 + ", " + y3 + ")");
+            xTemp3 = lambda.getX(xRes2, xRes2);
+            yTemp3 = lambda.getY(xRes2, yRes2);
+            System.out.println("q(ra) = (" + xTemp3 + ", " + yTemp3 + ")");
         } else if (q > 2) {
             lambda.count(xRes2, yRes2, a, p);
             x3 = lambda.getX(xRes2, xRes2);
@@ -145,12 +146,21 @@ public class Main{
 
         double xRes4 = 0;
         double yRes4 = 0;
-        lambdaNS.count(P1, P2, xRes3, yRes3, p);
-        xRes4 = lambdaNS.getX(P1, xRes3);;
-        yRes4 = lambdaNS.getY(P1, P2);
-        System.out.println("y2 = (" + xRes4 + ", " + yRes4 + ")");
-        System.out.println("Ciphertext: {(" + xTemp + ", " + yTemp + "),(" + xRes4 + ", " + yRes4 + ")}");
-
+        if (xRes3 == 0){
+            lambdaNS.count(P1, P2, xTemp3, yTemp3, p);
+            xRes4 = lambdaNS.getX(P1, xRes3);;
+            yRes4 = lambdaNS.getY(P1, P2);
+            System.out.println("y2 = (" + xRes4 + ", " + yRes4 + ")");
+            System.out.println("Ciphertext: {(" + xTemp + ", " + yTemp + "),(" + xRes4 + ", " + yRes4 + ")}");
+        }
+        else {
+            lambdaNS.count(P1, P2, xRes3, yRes3, p);
+            xRes4 = lambdaNS.getX(P1, xTemp3);;
+            yRes4 = lambdaNS.getY(P1, P2);
+            System.out.println("y2 = (" + xRes4 + ", " + yRes4 + ")");
+            System.out.println("Ciphertext: {(" + xTemp + ", " + yTemp + "),(" + xRes4 + ", " + yRes4 + ")}");
+        }
+        
 
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ DEKRIPSI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
         /*
