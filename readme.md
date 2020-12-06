@@ -24,3 +24,7 @@ Jadi ya begini lah usaha kami wkwkwk.
 Sekali lagi, Kami mohon maaf dan mohon dimaklumi, terimakasih.
 
 -Rio, Kevin, Nadhifal.
+
+
+Tambahan dari Kevin (yang ngerjain GUI):
+"Sebenernya masih pengen dibenerin, cmn kevinnya terjebak di mubes"
