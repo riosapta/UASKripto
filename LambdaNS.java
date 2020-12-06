@@ -63,16 +63,16 @@ public class LambdaNS {
         return y3;
     }
 
-    /*public double modInverse(double a, double m) 
+    public double modInverse(double a, double m) 
     { 
         a = a % m; 
         for (double i = 1; i < m; i++) 
             if ((a * i) % m == 1) 
                 return i; 
         return 1; 
-    } */
+    } 
 
-    static double modInverse(double a, double m) 
+    /*static double modInverse(double a, double m) 
     { 
         double m0 = m; 
         double s = 0, r = 1; 
@@ -102,5 +102,5 @@ public class LambdaNS {
             r += m0; 
   
         return r; 
-    } 
+    } */
 }
